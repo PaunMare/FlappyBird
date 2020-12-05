@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Game1
 {
+    [Serializable]
     class Obstacle:Sprite
     {
         float time=10f;

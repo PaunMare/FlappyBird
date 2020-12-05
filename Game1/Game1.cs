@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using System.Collections.Generic;
 namespace Game1
 {
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        public SpriteFont font;
 
         public Vector2 spawningPositionUp, spawningPositionUp1, spawningPositionUp2;
         public Vector2 spawningPositionDown, spawningPositionDown1, spawningPositionDown2;
@@ -16,10 +17,12 @@ namespace Game1
 
         Sprite left;
 
+        Player player;
+
         Obstacle down1,down2,down3;
         Obstacle up1,up2,up3;
-
-        float score;
+        List<Obstacle> obstacles = new List<Obstacle>();
+        float score = 0;
 
         Texture2D background;
         Texture2D ground;
@@ -35,7 +38,7 @@ namespace Game1
             // TODO: Add your initialization logic here
             background = Content.Load<Texture2D>("backround");
             ground = Content.Load<Texture2D>("ground1");
-
+            player = new Player(Content.Load<Texture2D>("virus"), new Vector2(100f, 100f),new Vector2(),obstacles);
 
             spawningPositionUp = new Vector2(GraphicsDevice.Viewport.Width, 0f);
             spawningPositionUp1 = new Vector2(GraphicsDevice.Viewport.Width + 267f, 0f);
@@ -53,6 +56,9 @@ namespace Game1
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            //font = Content.Load<SpriteFont>("Score");
+            font = Content.Load<SpriteFont>("File");
+
             left = new Sprite(Content.Load<Texture2D>("wall2"), leftSide);
             
             down1 = new Obstacle(Content.Load<Texture2D>("obstacle240"), spawningPositionDown);
@@ -63,6 +69,13 @@ namespace Game1
 
             down3 = new Obstacle(Content.Load<Texture2D>("obstacle"), spawningPositionDown2);
             up3 = new Obstacle(Content.Load<Texture2D>("obstacle240"), spawningPositionUp2);
+
+            obstacles.Add(down1);
+            obstacles.Add(up1);
+            obstacles.Add(down2);
+            obstacles.Add(up2);
+            obstacles.Add(down3);
+            obstacles.Add(up3);
             // TODO: use this.Content to load your game content here
         }
 
@@ -72,6 +85,7 @@ namespace Game1
                 Exit();
 
             // TODO: Add your update logic here
+            player.Update(gameTime);
             if (down1.IsTouchingLeft(left))
             {
                 down1.position = spawningPositionDown;
@@ -87,6 +101,25 @@ namespace Game1
                 down3.position = spawningPositionDown22;
                 up3.position = spawningPositionUp;
             }
+            foreach (Obstacle obstacle in obstacles)
+            {
+                if (player.IsTouchingDown(obstacle)) {
+
+                    Exit();
+                }
+                if (player.IsTouchingTop(obstacle))
+                {
+                    Exit();
+                }
+                if (player.IsTouchingRight(obstacle))
+                {
+                    Exit();
+                }
+                if (player.IsTouchingLeft(obstacle))
+                {
+                    Exit(); 
+                }
+            }
 
             down1.Update(gameTime);
             up1.Update(gameTime);
@@ -94,7 +127,7 @@ namespace Game1
             up2.Update(gameTime);
             down3.Update(gameTime);
             up3.Update(gameTime);
-
+            score += 0.05f;
             base.Update(gameTime);
         }
 
@@ -113,6 +146,8 @@ namespace Game1
             up2.Draw(_spriteBatch);
             down3.Draw(_spriteBatch);
             up3.Draw(_spriteBatch);
+            player.Draw(_spriteBatch);
+            _spriteBatch.DrawString(font, "Score: " + score.ToString("0"), new Vector2(50f,GraphicsDevice.Viewport.Height-50f), Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

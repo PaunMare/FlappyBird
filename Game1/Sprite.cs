@@ -24,6 +24,12 @@ namespace Game1
             this.texture = texture;
             this.position = vector;
         }
+        public Sprite(Texture2D texture, Vector2 vector,Vector2 velocity)
+        {
+            this.texture = texture;
+            this.position = vector;
+            this.velocity = velocity;
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
