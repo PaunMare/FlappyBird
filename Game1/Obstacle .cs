@@ -11,7 +11,7 @@ namespace Game1
     {
         float time=10f;
         float nextStep = 10f;
-        float speed = 1.5f;
+        float speed = 2f;
         public Obstacle(Texture2D texture,Vector2 position):base(texture,position)
         {
             this.texture = texture;

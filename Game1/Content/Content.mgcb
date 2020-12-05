@@ -87,7 +87,7 @@
 /processorParam:TextureFormat=Compressed
 /build:Score.spritefont
 
-#begin virus-removebg-preview.png
+#begin smile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -97,7 +97,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:virus-removebg-preview.png;virus.png
+/build:smile.png
 
 #begin virus-removebg-preview.png
 /importer:TextureImporter

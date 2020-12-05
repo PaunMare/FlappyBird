@@ -38,7 +38,7 @@ namespace Game1
             // TODO: Add your initialization logic here
             background = Content.Load<Texture2D>("backround");
             ground = Content.Load<Texture2D>("ground1");
-            player = new Player(Content.Load<Texture2D>("virus"), new Vector2(100f, 100f),new Vector2(),obstacles);
+            player = new Player(Content.Load<Texture2D>("smile"), new Vector2(100f, 100f),new Vector2(),obstacles);
 
             spawningPositionUp = new Vector2(GraphicsDevice.Viewport.Width, 0f);
             spawningPositionUp1 = new Vector2(GraphicsDevice.Viewport.Width + 267f, 0f);

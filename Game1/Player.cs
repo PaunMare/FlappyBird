@@ -9,7 +9,7 @@ namespace Game1
 {
     class Player : Sprite
     {
-        public float jumpForce = 5f;
+        public float jumpForce = 3f;
         public bool jump;
         List<Obstacle> obstacles;
         public Player(Texture2D texture, Vector2 position, Vector2 velocity, List<Obstacle> obstacles) : base(texture, position, velocity)
@@ -26,8 +26,8 @@ namespace Game1
             position += velocity;
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                position.Y -= jumpForce;
-                velocity.Y = -5f;
+                
+                velocity.Y = -3f;
                 jump = true;
             }
             if (jump)
