@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Game1
 {
-    class Sprite
+     public class Sprite
     {
         public Texture2D texture;
         public Vector2 position;
         public Vector2 velocity;
-
+       
         public Rectangle Rectangle
         {
             get
@@ -35,7 +35,7 @@ namespace Game1
         {
             spriteBatch.Draw(texture, position, Color.White);
         }
-
+       
         public bool IsTouchingLeft(Sprite sprite)
         {
             return this.Rectangle.Right + this.velocity.X > sprite.Rectangle.Left &&
@@ -45,7 +45,7 @@ namespace Game1
         }
         public bool IsTouchingRight(Sprite sprite)
         {
-            return this.Rectangle.Right + this.velocity.X < sprite.Rectangle.Right &&
+            return this.Rectangle.Left + this.velocity.X < sprite.Rectangle.Right &&
                    this.Rectangle.Right > sprite.Rectangle.Right &&
                    this.Rectangle.Bottom > sprite.Rectangle.Top &&
                    this.Rectangle.Top < sprite.Rectangle.Bottom;

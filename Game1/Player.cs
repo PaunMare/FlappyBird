@@ -22,44 +22,22 @@ namespace Game1
         }
         public void Update(GameTime gameTime)
         {
-            Collision();
+            
             position += velocity;
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {
-                
-                velocity.Y = -3f;
+
+                velocity.Y = -2.5f;
                 jump = true;
             }
             if (jump)
             {
                 float i = 1f;
-                velocity.Y += 0.15f * i;
+                velocity.Y += 0.1f * i;
             }
             if (!jump)
             {
                 velocity.Y = 0f;
-            }
-        }
-        public void Collision()
-        {
-            foreach (Obstacle obstacle in obstacles)
-            {
-                if (this.IsTouchingDown(obstacle))
-                {
-                    
-                }
-                if (this.IsTouchingTop(obstacle))
-                {
-
-                }
-                if (this.IsTouchingRight(obstacle))
-                {
-
-                }
-                if (this.IsTouchingLeft(obstacle))
-                {
-
-                }
             }
         }
 
