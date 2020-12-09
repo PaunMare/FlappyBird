@@ -42,6 +42,9 @@ namespace Game1
             down2 = new Obstacle(_contentManager.Load<Texture2D>("obstacle170"), spawningPositionDown1);
             down3 = new Obstacle(_contentManager.Load<Texture2D>("obstacle130"), spawningPositionDown2);
             down4 = new Obstacle(_contentManager.Load<Texture2D>("obstacle170"), spawningPositionDown3);
+            top = new Obstacle(_contentManager.Load<Texture2D>("ground1"), new Vector2(0f, 0f - _contentManager.Load<Texture2D>("ground1").Height));
+            bottom = new Obstacle(_contentManager.Load<Texture2D>("ground1"), new Vector2(0f,graphicsDevice.Viewport.Height ));
+
             left = new Sprite(contentManager.Load<Texture2D>("wall2"),new Vector2(0f-_contentManager.Load<Texture2D>("wall2").Width,_graphicsDevice.Viewport.Height - contentManager.Load<Texture2D>("wall2").Height));
             obstacles = new List<Obstacle>();
             obstacles.Add(down1);
@@ -52,10 +55,13 @@ namespace Game1
             obstacles.Add(up3);
             obstacles.Add(down4);
             obstacles.Add(up4);
+            obstacles.Add(top);
+            obstacles.Add(bottom);
         }
 
         public SpriteFont font;
 
+        public float checkPoint = 100f;
       
 
         public Vector2 spawningPositionUp, spawningPositionUp1, spawningPositionUp2,spawningPositionUp3;
@@ -66,7 +72,7 @@ namespace Game1
         Sprite left;
         
 
-        Obstacle up3, down3, up1, up2, down1, down2,up4,down4;
+        Obstacle up3, down3, up1, up2, down1, down2,up4,down4,top,bottom;
 
         Player player;
 
@@ -96,7 +102,8 @@ namespace Game1
             up3.Draw(spriteBatch);
             down4.Draw(spriteBatch);
             up4.Draw(spriteBatch);
-           
+            top.Draw(spriteBatch);
+            bottom.Draw(spriteBatch);
             
             spriteBatch.DrawString(font, "Score: " + score.ToString("0"), new Vector2(50f, _graphicsDevice.Viewport.Height - 50f), Color.White);
             spriteBatch.End();
@@ -168,6 +175,11 @@ namespace Game1
             //        i--;
             //    }
             //}
+            if (score > checkPoint)
+            {
+                Obstacle.speed += 1f;
+                checkPoint += checkPoint;
+            }
 
             score += 0.05f;
         }

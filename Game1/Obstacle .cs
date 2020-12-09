@@ -22,11 +22,18 @@ namespace Game1
         }
         public void Update(GameTime gameTime)
         {
-            if(gameTime.TotalGameTime.TotalSeconds >= time)
-            {
-                speed += 0.15f;
-                time += nextStep;
-            }
+            //time += 0.0000001f;
+            
+            //if (time > nextStep)
+            //{
+            //    speed += 1f;
+            //    nextStep += nextStep;
+            //}
+            //if (gameTime.TotalGameTime.TotalSeconds > time)
+            //{
+            //    speed += 0.1f;
+            //    time += nextStep;
+            //}
             this.position.X -= speed;
 
         }
