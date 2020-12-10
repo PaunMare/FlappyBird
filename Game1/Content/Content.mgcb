@@ -63,6 +63,18 @@
 /processorParam:TextureFormat=Color
 /build:ground1.png
 
+#begin left.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:left.png
+
 #begin mainmenu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -146,6 +158,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:obstacle240.png
+
+#begin obstacle250.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:obstacle250.png
+
+#begin obstacle90.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:obstacle90.png
 
 #begin Score.spritefont
 /importer:FontDescriptionImporter
